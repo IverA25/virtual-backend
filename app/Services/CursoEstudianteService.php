@@ -11,10 +11,10 @@ class CursoEstudianteService
     public function store($data)
     {
         $cursoEstudiante = CursoEstudiante::create([
-            'curso_id' => $data['nombre'],
-            'user_id' => $data['descripcion'],
-            'monto' => $data['url_portada'],
-            'fecha' => $data['precio'],
+            'curso_id' => $data['curso_id'],
+            'user_id' => $data['user_id'],
+            'monto' => $data['monto'],
+            'fecha' => $data['fecha'],
             'estado' => Estado::ACTIVO,
             'es_eliminado' => 0
         ]);

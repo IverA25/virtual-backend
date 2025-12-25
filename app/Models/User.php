@@ -55,4 +55,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Persona::class, 'usuario_id');
     }
+    public function compraCursos()
+    {
+        return $this->hasMany(CompraCurso::class, 'user_id', 'id');
+    }
 }

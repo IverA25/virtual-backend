@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CompraCursoController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\PerfilUsuarioController;
@@ -55,7 +56,7 @@ Route::prefix('v1')->group(function () {
     //Rutas sin autenticacion
     Route::get('tabla-config/datos', [TablaConfigController::class, 'show']);
     Route::get('tabla-config/aranceles-doc', [TablaConfigController::class, 'obtenerArancelAbogados']);
-    
+
 
     Route::middleware(['auth:sanctum'])->group(function () {
         //Materia
@@ -64,7 +65,7 @@ Route::prefix('v1')->group(function () {
         Route::post('materias', [MateriaController::class, 'store']);
         Route::patch('materias/{materia}', [MateriaController::class, 'update']);
         Route::patch('materias/eliminar/{materia}', [MateriaController::class, 'destroy']);
-      
+
         //Tabla config
         Route::post('tabla-config/actualizar', [TablaConfigController::class, 'update']);
         Route::post('tabla-config/actualizar-arancel', [TablaConfigController::class, 'updataArancelesAbogado']);
@@ -90,10 +91,11 @@ Route::prefix('v1')->group(function () {
         Route::post('tag-cursos', [TagCursoController::class, 'store']);
         Route::patch('tag-cursos/{tagCurso}', [TagCursoController::class, 'update']);
         Route::patch('tag-cursos/eliminar/{tagCurso}', [TagCursoController::class, 'destroy']);
-
-
-
-
-        
+        //CompraCurso
+        Route::get('compra-cursos', [CompraCursoController::class, 'index']);
+        Route::post('compra-cursos', [CompraCursoController::class, 'store']);
+        Route::get('compra-cursos/{compraCurso}', [CompraCursoController::class, 'show']);
+        Route::get('compra-cursos/listar/activos', [CompraCursoController::class, 'listarActivos']);
+        Route::patch('compra-cursos/eliminar/{compraCurso}', [CompraCursoController::class, 'destroy']);
     });
 });

@@ -35,4 +35,8 @@ class Curso extends Model
     {
         return $this->hasMany(TagCurso::class, 'curso_id', 'id');
     }
+    public function compraCursos()
+    {
+        return $this->hasMany(CompraCurso::class, 'curso_id', 'id');
+    }
 }
